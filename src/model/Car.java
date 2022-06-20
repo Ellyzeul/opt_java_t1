@@ -15,11 +15,11 @@ public class Car extends Thread {
   
     @Override
     public void run(){
-        syncronized(text){ //error
+        synchronized (text) {
             for(int i=1; i<=10;i++){
-                text = text +i+" hello\n";
+                text = String.format("%s\n%s", text, Integer.toString(i));
                 System.out.println(text);
-            }            
+            }
         }
     }
 }

@@ -24,19 +24,19 @@ public class Car extends Thread {
         for(int i = 1; i <= totalLaps;) {
             synchronized (lock1) {
                 if(Math.random() < probCrash) {
-                    CarController.setText(String.format("%s\nCarro#%4d - Houve um pequeno incidente nessa volta.", CarController.getText(),id));
+                    CarController.setText(String.format("%s\nCarro #%04d - Quebrou nessa volta.", CarController.getText(),id));
                     continue;
                 }
                 if(Math.random() < probRefuel) {
-                    CarController.setText(String.format("%s\nCarro#%4d - Parou para abastecer nessa volta.", CarController.getText(), id));
+                    CarController.setText(String.format("%s\nCarro #%04d - Parou para abastecer nessa volta.", CarController.getText(), id));
                     continue;
                 }
 
-                CarController.setText(String.format("%s\nCarro#%4d - %d de %d voltas completas.", CarController.getText(), id, i++, totalLaps));
+                CarController.setText(String.format("%s\nCarro #%04d - %d de %d voltas completas.", CarController.getText(), id, i++, totalLaps));
             }
         }
         synchronized (ranking) {
-            CarController.setPodium(String.format("%s\nCarro#%4d - Chegou em %sº lugar.", CarController.getPodium(), id, ranking++));
+            CarController.setPodium(String.format("%s\nCarro #%04d - Chegou em %sº lugar.", CarController.getPodium(), id, ranking++));
         }
     }
 }

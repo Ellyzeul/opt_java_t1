@@ -127,7 +127,7 @@ public class BtnCol {
     JTextField probCrash = new JTextField(5);
     GridBagConstraints cons = new GridBagConstraints();
     
-    label.setText("Chance de incidentes (ex.: 0.35):");
+    label.setText("Chance de quebrar (ex.: 0.35):");
     cons.gridy = 2;
     cons.gridx = 0;
     cons.ipady = 1;

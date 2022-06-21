@@ -5,8 +5,11 @@ import java.awt.GridBagConstraints;
 
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
 
 import config.Config;
+import src.view.Context;
 
 public class ContentCol {
     public static JPanel getComponent() {
@@ -24,6 +27,8 @@ public class ContentCol {
             }
         };
 
+        ContentCol.setRaceLog(contentCol);
+
         return contentCol;
     }
 
@@ -38,4 +43,21 @@ public class ContentCol {
 
         return cons;
     }
+
+    private static void setRaceLog(JPanel contentCol) {
+        JPanel container = new JPanel();
+        JTextArea raceLog = new JTextArea(32, 40);
+        JScrollPane scroll = new JScrollPane(raceLog);
+        GridBagConstraints cons = new GridBagConstraints();
+        
+        cons.gridy = 0;
+        cons.gridx = 0;
+        cons.ipady = 1;
+        cons.anchor = GridBagConstraints.CENTER;
+
+        Context.setRaceLog(raceLog);
+    
+        container.add(scroll);
+        contentCol.add(container, cons);
+      }
 }

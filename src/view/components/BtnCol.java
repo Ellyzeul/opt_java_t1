@@ -15,8 +15,12 @@ import java.awt.GridBagLayout;
 
 import config.Config;
 import src.controller.CarController;
+import src.view.Context;
 
 public class BtnCol {
+  private static JTextField totalCars;
+  private static JTextField totalLaps;
+
   public static JPanel getComponent() {
     JPanel btnCol = new JPanel();
     btnCol.setBackground(new Color(176, 176, 176));
@@ -77,6 +81,8 @@ public class BtnCol {
       
     });
 
+    BtnCol.totalCars = totalCars;
+
     container.add(label);
     container.add(totalCars);
     btnCol.add(container, cons);
@@ -115,6 +121,8 @@ public class BtnCol {
       public void changedUpdate(DocumentEvent e) {}
       
     });
+
+    BtnCol.totalLaps = totalLaps;
 
     container.add(label);
     container.add(totalLaps);
@@ -210,6 +218,10 @@ public class BtnCol {
 
     startBtn.addActionListener(new ActionListener() {
       public void actionPerformed(ActionEvent e) {
+        Context.setProgressBars(
+          Integer.parseInt(BtnCol.totalCars.getText()), 
+          Integer.parseInt(BtnCol.totalLaps.getText())
+        );
         CarController.startRace();
       }
     });

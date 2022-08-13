@@ -2,6 +2,8 @@ package src.controller;
 
 import java.util.ArrayList;
 
+import javax.swing.JProgressBar;
+
 import src.model.Car;
 import src.view.Context;
 
@@ -63,6 +65,7 @@ public class CarController {
 
     public static void startRace(){
       ArrayList<Car> list = new ArrayList<>();
+      ArrayList<JProgressBar> progressBars = Context.getProgressBars();
 
       text = "";
       podium = "";
@@ -72,7 +75,8 @@ public class CarController {
           i+1,
           CarController.totalLaps,
           CarController.probCrash,
-          CarController.probRefuel
+          CarController.probRefuel,
+          progressBars.get(i)
         ));
       }
       for(Car car: list) {

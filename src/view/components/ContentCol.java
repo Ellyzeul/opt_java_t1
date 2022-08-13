@@ -1,5 +1,6 @@
 package src.view.components;
 
+import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.GridBagConstraints;
 
@@ -28,6 +29,7 @@ public class ContentCol {
         };
 
         ContentCol.setRaceLog(contentCol);
+        ContentCol.setProgressBarsContainer(contentCol);
 
         return contentCol;
     }
@@ -46,7 +48,7 @@ public class ContentCol {
 
     private static void setRaceLog(JPanel contentCol) {
         JPanel container = new JPanel();
-        JTextArea raceLog = new JTextArea(32, 40);
+        JTextArea raceLog = new JTextArea(10, 40);
         JScrollPane scroll = new JScrollPane(raceLog);
         GridBagConstraints cons = new GridBagConstraints();
         
@@ -59,5 +61,23 @@ public class ContentCol {
     
         container.add(scroll);
         contentCol.add(container, cons);
+    }
+
+    private static void setProgressBarsContainer(JPanel contentCol) {
+        JPanel container = new JPanel();
+        JPanel progressBarsContainer = new JPanel();
+        JScrollPane scrollContainer = new JScrollPane(progressBarsContainer);
+        GridBagConstraints cons = new GridBagConstraints();
+
+        progressBarsContainer.setPreferredSize(new Dimension(500, 300));
+
+        cons.gridy = 1;
+        cons.gridx = 0;
+        cons.ipady = 1;
+        cons.anchor = GridBagConstraints.CENTER;
+        
+        Context.setProgressBarsContainer(progressBarsContainer);
+        container.add(scrollContainer);
+        contentCol.add(progressBarsContainer, cons);
       }
 }
